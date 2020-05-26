@@ -93,7 +93,7 @@ int de_listQueue(LinkQueue *lq, data_t *data)
         *data = de->data;
     free(de);
     
-    if(jugde_linkQueue_empty(lq) == 0)//变成了"空"队列,队列中所有成员已经取完了
+    if(jugde_linkQueue_empty(lq) == 1)//变成了"空"队列,队列中所有成员已经取完了
         lq->rear = lq->front;//初始化,防止队尾指针指向一个已经释放的内存
     return 0;
 }
