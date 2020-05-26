@@ -203,8 +203,10 @@ void levelOrder_print(tree *root)
         if(temp == NULL)
             break;
         printf("%d ", temp->data);
-        en_linkQueue(lq, temp->lchild);
-        en_linkQueue(lq, temp->rchild);
+        if(temp->lchild != NULL)
+            en_linkQueue(lq, temp->lchild);
+        if(temp->rchild != NULL)
+            en_linkQueue(lq, temp->rchild);
     }
     destroy_linkQueue(&lq);
     printf("\n");
