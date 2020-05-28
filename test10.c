@@ -1,54 +1,42 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdbool.h>
 
-int myAtoi(char * str);
+int lengthOfLongestSubstring(char * s);
 
 int main(int argc, char const *argv[])
 {
-    printf("%d\n", myAtoi("10"));
+    printf("%d\n", lengthOfLongestSubstring("bbbbb"));
     return 0;
 }
 
-#define MY_INT_MAX 2147483647
-#define MY_INT_MIN -2147483648
-int myAtoi(char * str){
-    int num = 0;
-    int flag = 0;//还没有处理数字
-    while(*str != 0)
-    {
-        if(*str >= '0' && *str <= '9')
-        {
-            if((long)num*10 + (*str - '0')*flag > MY_INT_MAX)
-                return MY_INT_MAX;
-            if((long)num*10 + (*str - '0')*flag < MY_INT_MIN)
-                return MY_INT_MIN;
-            if(flag == 0)//默认正数
-                flag = 1;
-            num = num*10 + (*str - '0')*flag;
-            str++;
-        }
-        else if(*str == ' ' && flag == 0)//数字前的空格的去除
-            str++;
-        else if(*str == '-' && flag == 0)//负数
-        {
-            flag = -1;
-            str++;
-            if(*str >= '0' && *str <= '9')
-                num = -(*str-'0');
-            else
-                break;
-            str++;
-        }
-        else if(*str == '+' && flag == 0)//正数
-        {
-            flag = 1;
-            str++;
-        }
-        else//异常字符
-            break;
-    }
+int lengthOfLongestSubstring(char * s){
 
-    return num;
+    int max = 0;
+    char hash[128] = {0};
+    char *temp;
+    int n = 0;
+    while(*s != '\0')
+    {
+        temp = s;
+        n = 0;
+        while(*temp != '\0')
+        {
+            if(hash[(int)*temp]==0)
+            {
+                hash[(int)*temp]++;
+                n++;
+            }
+            else
+            {
+                break;
+            }
+            temp++;
+        }
+        if(max < n)
+            max = n;
+        memset(hash, 0, sizeof(hash));
+        s++;
+    }
+    return max;
 }
