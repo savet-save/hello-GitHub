@@ -1,74 +1,54 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
-char * longestPalindrome(char * s);
+int myAtoi(char * str);
 
 int main(int argc, char const *argv[])
 {
-    printf("%s\n", longestPalindrome("ccc"));
+    printf("%d\n", myAtoi("10"));
     return 0;
 }
 
-char * longestPalindrome(char * s){
-    int str_len = strlen(s);
-    if(str_len <= 1)
+#define MY_INT_MAX 2147483647
+#define MY_INT_MIN -2147483648
+int myAtoi(char * str){
+    int num = 0;
+    int flag = 0;//还没有处理数字
+    while(*str != 0)
     {
-        static char one_char[2] = {0};
-        one_char[0] = *s;
-        return one_char; 
-    }
-    char *const s_head = s;//指向字符串第一个字符位置
-    int i;
-    char *max_star = s;//指向最大的开始
-    int max_num = 1;//表示最大的个数
-    int n;//当前个数
-
-    s++;//从第二个字母开始
-    while(*s != '\0')
-    {
-        
-        if(s[-1] == s[1])//回文字的第一种情况
+        if(*str >= '0' && *str <= '9')
         {
-            n = 1;
-            for(i = 0;s[-i-1] == s[i + 1];i++)
-            {
-                n += 2;
-                if(s-i-1 == s_head)
-                    break;
-
-            }
-            if(max_num < n)
-            {
-                max_num = n;
-                max_star = s-n/2;//指向开头
-            }
+            if((long)num*10 + (*str - '0')*flag > MY_INT_MAX)
+                return MY_INT_MAX;
+            if((long)num*10 + (*str - '0')*flag < MY_INT_MIN)
+                return MY_INT_MIN;
+            if(flag == 0)//默认正数
+                flag = 1;
+            num = num*10 + (*str - '0')*flag;
+            str++;
         }
-        if(s[-1] == s[0])//回文字的第二种情况
+        else if(*str == ' ' && flag == 0)//数字前的空格的去除
+            str++;
+        else if(*str == '-' && flag == 0)//负数
         {
-            n = 0;
-            for(i = 0;s[-i-1] == s[i];i++)
-            {
-                n += 2;
-                if(s-i-1 == s_head)
-                    break;
-
-            }
-            if(max_num < n)
-            {
-                max_num = n;
-                max_star = s-n/2;//指向开头
-            }
+            flag = -1;
+            str++;
+            if(*str >= '0' && *str <= '9')
+                num = -(*str-'0');
+            else
+                break;
+            str++;
         }
-        s++;
+        else if(*str == '+' && flag == 0)//正数
+        {
+            flag = 1;
+            str++;
+        }
+        else//异常字符
+            break;
     }
 
-    static char ret_str[1001];
-
-    for(i = 0; i < max_num;i++)
-    {
-        ret_str[i] = max_star[i];
-    }
-    ret_str[i] = '\0';
-    return ret_str;
+    return num;
 }
