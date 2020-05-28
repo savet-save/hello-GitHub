@@ -2,6 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
-    int *p = {};
+    argv++;
+    printf("%s\n", argv[-1]);
     return 0;
 }
