@@ -1,19 +1,19 @@
 #include <stdio.h>
 
 //复制src文件的内容到dst文件中
-int copy(const char *dst_filename, const char *src_filename);
+int copy(const char *src_filename, const char *dst_filename);
 
 int main(int argc, char const *argv[])
 {
     if(argc == 3)//如果带参数启动
-        copy(argv[2], argv[1]);
+        copy(argv[1], argv[2]);
     else//没带参数
-        copy("2.txt", "1.txt");
-
+        copy("1.txt", "2.txt");/*如果找不到路径加上.\\hq_task\\IO_Process_Thread\\*/
+    printf("%s", argv[0]);
     return 0;
 }
 
-int copy(const char *dst_filename, const char *src_filename)
+int copy(const char *src_filename, const char *dst_filename)
 {
     if(dst_filename == NULL || src_filename == NULL)
     {
@@ -30,6 +30,7 @@ int copy(const char *dst_filename, const char *src_filename)
     if(fp_src == NULL)
     {
         perror("fopen src fail");
+        fclose(fp_dst);
         return -1;
     }
     int ch;
@@ -37,6 +38,7 @@ int copy(const char *dst_filename, const char *src_filename)
     {
         fputc(ch, fp_dst);
     }
-
+    fclose(fp_dst);
+    fclose(fp_src);
     return 0;
 }
