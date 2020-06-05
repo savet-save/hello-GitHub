@@ -72,6 +72,6 @@ int delay_ms(int de_time)
     {
         return -1;
     }
-    while(clock() - c_star < de_time);
+    while((((clock() - c_star) / CLOCKS_PER_SEC) * 1000) < de_time);
     return 0;
 }
