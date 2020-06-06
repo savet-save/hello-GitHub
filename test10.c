@@ -3,17 +3,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-int fun(int , int);
 
 int main(int argc, char const *argv[])
 {
-    fun(1, 2);
-    return 0;
-}
-
-int fun(a, b)
-int a, b;
-{
-    printf("%d %d\n", a, b);
+    double d = 123.24;
+    printf("%0.1f\n", d);
     return 0;
 }
