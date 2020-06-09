@@ -6,7 +6,8 @@
 
 int main(int argc, char const *argv[])
 {
-    double d = 123.24;
-    printf("%0.1f\n", d);
+    char p = "10";
+    int i = 0;
+    atoi()
     return 0;
 }
