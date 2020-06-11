@@ -67,7 +67,7 @@ int get_line(FILE *fp)
 
 int delay_ms(int de_time)
 {
-    clock_t c_star = clock();
+    clock_t c_star = clock() / CLOCKS_PER_SEC * 1000;
     if(de_time <= 0)
     {
         return -1;
