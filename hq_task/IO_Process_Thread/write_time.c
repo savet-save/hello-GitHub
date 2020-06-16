@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
 #include <string.h>
 
 //向指定文件中写入时间带行号
