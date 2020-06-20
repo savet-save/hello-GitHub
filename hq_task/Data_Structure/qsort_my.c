@@ -43,8 +43,8 @@ void quickSort(int *p, int len)
 	p[i] = temp;//恢复
     print_arr(p, len);
     printf("\n");
-	if(i > 1)quickSort(p, i);//左边元素快排
-	if(len - i - 1 > 1)quickSort(p + i + 1, len - i - 1);//右边元素快排
+	if(i > 1)quickSort(p, i);//基准值左边元素快排
+	if(len - i - 1 > 1)quickSort(p + i + 1, len - i - 1);//基准值右边元素快排
     return ;
 }
 
