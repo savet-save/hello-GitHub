@@ -1,13 +1,18 @@
-#include <stdio.h>
 #include <string.h>
-#include <stdlib.h>
-#include <time.h>
-#include <signal.h>
+#include <stdio.h>
+#include <windows.h>
 
-int main(int argc, char const *argv[])
+struct name2{
+	char str;
+	int num;
+	short x;
+};
+
+int main(int argc, const char *argv[])
 {
-    void *p = -1;
-    printf("%d", p);
-    return 0;
-}
+	char szstr[10];
+	strcpy(szstr,"0123456789");
+	printf("%s", szstr);
 
+   	return(0);
+}
