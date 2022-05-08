@@ -267,6 +267,7 @@ void printfLinklist(LinkList *head)
 //链表逆序
 void reverseLinkList(LinkList *head)
 {
+
 	if(NULL == head)
 	{
 		return ;
@@ -285,11 +286,12 @@ void reverseLinkList(LinkList *head)
 
 		p->next = head->next;//头插
 		head->next = p;
-
+		
 		p = q;//用于下次插入
 	}
 
-	
+
+
 	return ;
 }
 

@@ -217,7 +217,7 @@ void levelOrder_print(tree *root)
 
 int main(int argc, char const *argv[])
 {
-    tree* root = crearTree(1, 12);
+    tree* root = crearTree(1, 4);
     perOrder_print(root);
     printf("\n");
 

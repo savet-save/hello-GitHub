@@ -12,7 +12,7 @@ int main() {
 		for (; map[z[2]] && (map[i = rand() % S] || (--map[i], ++len, --a)););
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), (COORD) { 0, 0 });
 		for (map[z[2]] = len, i = 0; i < S; ++i % W || _cputs("|\n"))
-			_cputs(map[i] > 0  ? ((map[i] -= a), "()") : map[i] ? "00" : "  ");
+			_cputs(map[i] > 0  ? ((map[i] -= a), "ad()") : map[i] ? "00" : "  ");
         // while(1);
 	}
 }

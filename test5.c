@@ -1,3 +1,3 @@
 #include <stdio.h>
 
-int temp = 4;
+static int temp = 4;

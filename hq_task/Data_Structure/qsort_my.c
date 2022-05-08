@@ -5,7 +5,7 @@ int print_arr(int *arr, int len);
 
 int main(int argc, char const *argv[])
 {
-    int arr[20] = {44, 12, 41, 33, 68, 77, 3, 2, 88, 10};
+    int arr[20] = {45, 12, 41, 33, 68, 77, 3, 2, 88, 10};
     quickSort(arr, 10);
     print_arr(arr, 10);
     return 0;
@@ -31,7 +31,7 @@ void quickSort(int *p, int len)
                 break;
             }
         }
-        for(; i <j; i++)//循环遍历左边的数据元素
+        for(; i < j; i++)//循环遍历左边的数据元素
         {
             if(p[i] > temp)//如果大于基准值到右边
             {
