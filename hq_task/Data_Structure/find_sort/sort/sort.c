@@ -59,15 +59,17 @@ int binSort(int *a,int len)
 	}
 	return 0;
 }
-//快速排序
+//快速排序, 
 int quickSort(int *a, int len)
 {
-	if(a == NULL || len < 0)
+	if(a == NULL || len < 0) {
 		return -1;
-	if(len > 1)
+	}
+	if(len == 0 || len == 1) { // not need sort
 		return 0;
-	
-	int temp = a[0];		
+	}
+
+	int temp = a[0];
 	int i = 0;
 	int j = len-1;
 	while(i < j)
